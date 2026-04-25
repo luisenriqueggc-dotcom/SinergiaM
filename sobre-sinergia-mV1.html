@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Sinergia M</title>
+  <style>
+    :root{
+      --bg:#f6f3ef;
+      --paper:#fbf8f4;
+      --ink:#1d1722;
+      --ink-soft:#5f5968;
+      --purple:#7b2ea3;
+      --purple-deep:#40105f;
+      --purple-dark:#2f0a49;
+      --coral:#ee5a4f;
+      --amber:#f1aa43;
+      --pink:#f46aa8;
+      --violet:#8f4bff;
+      --white:#ffffff;
+      --line:rgba(64,16,95,.12);
+      --shadow:0 20px 60px rgba(20,10,30,.12);
+      --max:1320px;
+      --radius:32px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    .section{
+      position:relative;
+      padding:100px 0;
+    }
+
+    .label{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.72);
+      font-weight:800;
+      margin-bottom:18px;
+    }
+
+    .label::before{
+      content:"";
+      width:42px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--coral),var(--amber));
+    }
+
+    .label-dark{
+      color:var(--ink-soft);
+    }
+
+    .serif{
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing:-.03em;
+    }
+
+    .nav-wrap{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(14px);
+      background:rgba(246,243,239,.82);
+      border-bottom:1px solid rgba(64,16,95,.08);
+    }
+
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:800;
+      color:var(--purple-deep);
+      letter-spacing:.01em;
+    }
+
+    .brand-mark{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.95) 0 14%, transparent 15%),
+        conic-gradient(from 10deg, var(--purple) 0 18%, var(--coral) 18% 36%, var(--amber) 36% 54%, var(--purple) 54% 72%, var(--coral) 72% 90%, var(--amber) 90% 100%);
+      box-shadow: inset 0 0 0 5px var(--paper);
+      position:relative;
+    }
+
+    .brand small{
+      display:block;
+      font-size:11px;
+      font-weight:600;
+      color:var(--ink-soft);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:0 22px;
+      border-radius:16px;
+      font-weight:800;
+      border:1px solid transparent;
+      transition:.25s ease;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--coral), #d84b72);
+      color:white;
+      box-shadow:0 16px 34px rgba(238,90,79,.22);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.72);
+      border-color:rgba(64,16,95,.16);
+      color:var(--ink);
+    }
+
+    .btn-dark{
+      background:linear-gradient(135deg, #5f24a1, #351051);
+      color:white;
+      box-shadow:0 18px 36px rgba(64,16,95,.22);
+    }
+
+    /* HERO */
+    .hero{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.10), transparent 18%),
+        radial-gradient(circle at 84% 24%, rgba(241,170,67,.14), transparent 16%),
+        linear-gradient(135deg, #2b0c44 0%, #5d1f95 40%, #e14d7d 78%, #f1aa43 100%);
+      color:white;
+      overflow:hidden;
+      padding:72px 0 86px;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size:26px 26px;
+      opacity:.18;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap:34px;
+      align-items:end;
+    }
+
+    .hero-copy h1{
+      margin:0 0 18px;
+      font-size:clamp(3rem, 6vw, 6rem);
+      line-height:.92;
+      max-width:9ch;
+    }
+
+    .hero-copy p{
+      margin:0 0 28px;
+      max-width:38ch;
+      color:rgba(255,255,255,.84);
+      font-size:clamp(1.04rem, 1.5vw, 1.18rem);
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .hero-side{
+      display:grid;
+      gap:16px;
+    }
+
+    .hero-note{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:28px;
+      padding:26px;
+      backdrop-filter:blur(10px);
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+    }
+
+    .hero-note strong{
+      display:block;
+      font-size:1.6rem;
+      margin-bottom:10px;
+    }
+
+    .hero-note p{
+      margin:0;
+      color:rgba(255,255,255,.84);
+    }
+
+    /* SECTION BASE */
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .panel{
+      background:rgba(255,255,255,.74);
+      border:1px solid rgba(64,16,95,.08);
+      border-radius:32px;
+      padding:34px;
+      box-shadow:0 16px 34px rgba(20,10,30,.06);
+    }
+
+    .panel h2{
+      margin:0 0 18px;
+      font-size:clamp(2.2rem, 4vw, 3rem);
+      line-height:1.2;
+      color:var(--purple-deep);
+    }
+
+    .panel p{
+      margin:0 0 16px;
+      color:var(--ink-soft);
+      font-size:1.08rem;
+    }
+
+    .media-frame{
+      position:relative;
+      border-radius:34px;
+      overflow:hidden;
+      min-height:520px;
+      box-shadow:var(--shadow);
+      background:#ddd;
+    }
+
+    .media-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .media-frame::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border:1px solid rgba(64,16,95,.08);
+      border-radius:34px;
+      pointer-events:none;
+    }
+
+    .soft-bg{
+      background:
+        radial-gradient(circle at 22% 24%, rgba(123,46,163,.10), transparent 18%),
+        radial-gradient(circle at 78% 70%, rgba(241,170,67,.13), transparent 20%),
+        linear-gradient(180deg, rgba(106,27,154,.03), rgba(255,255,255,.34));
+    }
+
+    /* VALUES */
+    .values{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.82)),
+        linear-gradient(180deg, rgba(106,27,154,.03), rgba(255,255,255,.34));
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:34px;
+    }
+
+    .section-title h2{
+      margin:0;
+      font-size:clamp(2.4rem, 4.6vw, 4.8rem);
+      line-height:.94;
+      color:var(--purple);
+    }
+
+    .section-title p{
+      margin:14px auto 0;
+      max-width:760px;
+      color:var(--ink-soft);
+      font-size:1.06rem;
+    }
+
+    .values-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+    }
+
+    .value-card{
+      background:white;
+      border:1px solid rgba(64,16,95,.08);
+      border-radius:28px;
+      padding:24px 20px;
+      text-align:center;
+      box-shadow:0 16px 34px rgba(20,10,30,.05);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .value-card::before{
+      content:"";
+      position:absolute;
+      inset:0 auto auto 0;
+      width:100%;
+      height:4px;
+      background:linear-gradient(90deg, var(--purple), var(--coral), var(--amber));
+    }
+
+    .value-icon{
+      width:74px;
+      height:74px;
+      margin:0 auto 16px;
+      border-radius:22px;
+      display:grid;
+      place-items:center;
+      font-size:2rem;
+      background:linear-gradient(135deg, rgba(123,46,163,.12), rgba(241,170,67,.14));
+      color:var(--purple);
+    }
+
+    .value-card h3{
+      margin:0 0 10px;
+      font-size:1.35rem;
+      color:var(--purple);
+    }
+
+    .value-card p{
+      margin:0;
+      color:var(--ink-soft);
+      font-size:.98rem;
+      line-height:1.45;
+    }
+
+    /* OBJECTIVE */
+    .objective{
+      background:
+        radial-gradient(circle at 88% 14%, rgba(241,170,67,.12), transparent 18%),
+        radial-gradient(circle at 10% 80%, rgba(123,46,163,.10), transparent 16%),
+        linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.82));
+      overflow:hidden;
+    }
+
+    .objective-wrap{
+        display:grid;
+        grid-template-columns: 1.1fr .9fr;
+        gap:34px;
+        align-items:stretch;
+    }
+
+    .objective-left,
+    .objective-side{
+        display:flex;
+        flex-direction:column;
+        gap:26px;
+        height:100%;
+    }
+
+    .objective-left .panel,
+    .objective-side .objective-image{
+        flex:1;
+    }
+
+    .objective-image{
+        position:relative;
+        border-radius:32px;
+        overflow:hidden;
+        min-height:260px;
+        box-shadow:0 16px 34px rgba(20,10,30,.06);
+        background:linear-gradient(135deg, #ffffff, #f7eef9);
+        border:1px solid rgba(64,16,95,.08);
+    }
+
+    .objective-image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+    }
+
+    .objective-quote{
+      margin-top:26px;
+      padding:26px 28px;
+      border-radius:28px;
+      background:linear-gradient(135deg, rgba(123,46,163,.08), rgba(241,170,67,.12));
+      color:var(--purple);
+      font-weight:900;
+      font-size:clamp(1.3rem, 2vw, 2rem);
+      line-height:1.08;
+      text-align:center;
+    }
+
+    .objective-card{
+      background:linear-gradient(135deg, #ffffff, #f7eef9);
+      border:1px solid rgba(64,16,95,.08);
+      border-radius:32px;
+      padding:32px;
+      box-shadow:0 16px 34px rgba(20,10,30,.06);
+    }
+
+    .objective-card h3{
+      margin:0 0 14px;
+      color:var(--purple-deep);
+      font-size:1.5rem;
+    }
+
+    .objective-card p{
+      margin:0;
+      color:var(--ink-soft);
+      font-size:1.02rem;
+    }
+
+    /* LINES */
+    .lines{
+      background:linear-gradient(180deg, #7b2ea3 0%, #6a1b9a 100%);
+      color:white;
+      overflow:hidden;
+    }
+
+    .lines::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255,255,255,.06), transparent 14%),
+        radial-gradient(circle at 80% 80%, rgba(241,170,67,.10), transparent 16%);
+      pointer-events:none;
+    }
+
+    .lines-head{
+      position:relative;
+      z-index:2;
+      margin-bottom:28px;
+    }
+
+    .lines-head h2{
+      margin:0;
+      font-size:clamp(2.5rem, 4.8vw, 4.8rem);
+      line-height:.94;
+      color:white;
+    }
+
+    .lines-head .accent{
+      color:#f5b36a;
+      margin-right:12px;
+    }
+
+    .lines-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .line-card{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;
+      padding:26px;
+      backdrop-filter:blur(8px);
+    }
+
+    .line-card h3{
+      margin:0 0 12px;
+      font-size:1.45rem;
+      line-height:1.12;
+    }
+
+    .line-card p{
+      margin:0;
+      color:rgba(255,255,255,.88);
+      font-size:1.02rem;
+    }
+
+    /* TRANSVERSAL */
+    .transversal{
+      background:
+        radial-gradient(circle at 14% 20%, rgba(255,255,255,.12), transparent 16%),
+        radial-gradient(circle at 86% 82%, rgba(123,46,163,.16), transparent 18%),
+        linear-gradient(180deg, #f0a94d 0%, #e89f44 100%);
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .transversal-arc{
+      position:absolute;
+      border-radius:50%;
+      border:72px solid transparent;
+      border-top-color:rgba(123,46,163,.26);
+      border-right-color:rgba(255,255,255,.18);
+      pointer-events:none;
+      z-index:1;
+      transform:rotate(18deg);
+      filter:blur(.2px);
+    }
+
+    .transversal-arc.arc-1{
+      width:540px;
+      height:540px;
+      right:-140px;
+      top:-90px;
+    }
+
+    .transversal-arc.arc-2{
+      width:320px;
+      height:320px;
+      left:-90px;
+      bottom:-110px;
+      border-width:46px;
+      transform:rotate(210deg);
+      border-top-color:rgba(123,46,163,.18);
+      border-right-color:rgba(255,255,255,.14);
+    }
+
+    .transversal::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(115deg, rgba(255,255,255,.05) 0, rgba(255,255,255,.05) 1px, transparent 1px, transparent 48px);
+      background-size:26px 26px, 26px 26px, 64px 64px;
+      background-position:center center, center center, center center;
+      opacity:.22;
+      pointer-events:none;
+    }
+
+    .transversal-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .transversal-grid::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:14px;
+      bottom:14px;
+      width:1px;
+      transform:translateX(-50%);
+      background:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      pointer-events:none;
+    }
+
+    .transversal-grid > *{
+      position:relative;
+      z-index:2;
+    }
+
+    .transversal-card{
+      background:linear-gradient(180deg, rgba(123,46,163,.96), rgba(110,34,148,.94));
+      color:white;
+      border-radius:34px;
+      padding:30px;
+      box-shadow:0 24px 50px rgba(64,16,95,.20);
+      border:1px solid rgba(255,255,255,.10);
+      position:relative;
+      overflow:hidden;
+      backdrop-filter:blur(10px);
+    }
+
+    .transversal-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.10), transparent 18%),
+        linear-gradient(140deg, rgba(255,255,255,.06), transparent 42%);
+      pointer-events:none;
+    }
+
+    .transversal-card h2{
+      margin:0 0 18px;
+      font-size:clamp(2.2rem, 3.8vw, 3rem);
+      line-height:1.2;
+      max-width:16ch;
+    }
+
+    .transversal-card p,
+    .transversal-card li{
+      color:rgba(255,255,255,.92);
+      font-size:1.05rem;
+      line-height:1.55;
+    }
+
+    .transversal-card ul{
+      margin:0;
+      padding-left:22px;
+      display:grid;
+      gap:12px;
+    }
+
+    /* EVENTS */
+    .events{
+      background:
+        radial-gradient(circle at 50% 0%, rgba(244,106,168,.12), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.82));
+      overflow:hidden;
+    }
+
+    .events-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:30px;
+      align-items:center;
+    }
+
+    .events-main{
+      background:linear-gradient(135deg, #fff, #f8eef9);
+      border:1px solid rgba(64,16,95,.08);
+      border-radius:34px;
+      padding:34px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .events-main::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(241,170,67,.12), transparent 18%),
+        radial-gradient(circle at 10% 78%, rgba(123,46,163,.08), transparent 18%);
+      pointer-events:none;
+    }
+
+    .events-main > *{
+      position:relative;
+      z-index:2;
+    }
+
+    .events-main h2{
+      margin:0 0 16px;
+      font-size:clamp(2.4rem, 4vw, 4rem);
+      line-height:.94;
+      color:var(--purple);
+    }
+
+    .events-main p{
+      margin:0 0 24px;
+      color:var(--ink-soft);
+      font-size:1.08rem;
+      max-width:35ch;
+    }
+
+    .events-preview{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .preview-card{
+      position:relative;
+      background:white;
+      border:1px solid rgba(64,16,95,.08);
+      border-radius:26px;
+      padding:86px 20px 22px;
+      box-shadow:0 14px 30px rgba(20,10,30,.05);
+      min-height:196px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      overflow:visible;
+    }
+
+    .preview-thumb{
+      position:absolute;
+      top:-34px;
+      left:20px;
+      width:108px;
+      height:108px;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 18px 34px rgba(20,10,30,.12);
+      border:1px solid rgba(64,16,95,.10);
+      background:linear-gradient(135deg, #ffffff, #f8eef9);
+    }
+
+    .preview-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .preview-card strong{
+      display:block;
+      color:var(--purple-deep);
+      margin-bottom:8px;
+      font-size:1.05rem;
+    }
+
+    .preview-card span{
+      display:block;
+      color:var(--ink-soft);
+      font-size:.96rem;
+      line-height:1.42;
+    }
+
+    /* LINKS */
+    .links{
+      background:
+        linear-gradient(135deg, #2b0c44 0%, #5d1f95 40%, #e14d7d 78%, #f1aa43 100%);
+      color:white;
+      overflow:hidden;
+    }
+
+    .links::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size:28px 28px;
+      opacity:.18;
+      pointer-events:none;
+    }
+
+    .links-wrap{
+      position:relative;
+      z-index:2;
+    }
+
+    .links-title{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .links-title h2{
+      margin:0;
+      font-size:clamp(2.6rem, 4.8vw, 5rem);
+      line-height:.94;
+    }
+
+    .links-title p{
+      margin:14px auto 0;
+      max-width:760px;
+      color:rgba(255,255,255,.82);
+      font-size:1.06rem;
+    }
+
+    .links-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+    }
+
+    .links-brand{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:34px;
+      padding:34px;
+      backdrop-filter:blur(10px);
+      min-height:380px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .links-brand h3{
+      margin:0;
+      font-size:clamp(2.2rem, 4vw, 4rem);
+      line-height:1.2;
+      max-width:22ch;
+    }
+
+    .links-brand p{
+      margin:16px 0 0;
+      max-width:34ch;
+      color:rgba(255,255,255,.84);
+    }
+
+
+    .links-cards{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .link-card{
+      background:rgba(255,255,255,.92);
+      color:var(--ink);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 16px 34px rgba(20,10,30,.08);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:170px;
+    }
+
+    .link-icon{
+      width:54px;
+      height:54px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      font-size:1.4rem;
+      background:linear-gradient(135deg, rgba(123,46,163,.12), rgba(241,170,67,.14));
+      color:var(--purple);
+      margin-bottom:16px;
+    }
+
+    .link-card strong{
+      display:block;
+      font-size:1.06rem;
+      color:var(--purple-deep);
+      margin-bottom:6px;
+    }
+
+    .link-card span{
+      display:block;
+      color:var(--ink-soft);
+      font-size:.95rem;
+      line-height:1.4;
+      margin-bottom:14px;
+    }
+
+    .link-card a{
+      color:var(--purple);
+      font-weight:900;
+    }
+
+    footer{
+      border-top:1px solid rgba(64,16,95,.10);
+      padding:28px 0 40px;
+      background:var(--bg);
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto auto;
+      align-items:center;
+      gap:18px;
+      color:var(--ink-soft);
+    }
+
+    .footer-grid strong{color:var(--ink)}
+    .footer-links{display:flex; gap:26px; flex-wrap:wrap}
+
+    @media (max-width: 1100px){
+      .hero-grid,
+      .grid-2,
+      .objective-wrap,
+      .transversal-grid,
+      .events-grid,
+      .links-grid{
+        grid-template-columns:1fr;
+      }
+
+      .transversal-grid::before{display:none}
+
+      .values-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .lines-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 760px){
+      .section{padding:72px 0}
+      .container{width:min(var(--max), calc(100% - 24px))}
+      .nav{min-height:70px}
+      .nav-links{gap:8px}
+      .nav-links .btn{min-height:46px; padding:0 16px}
+      .hero-copy h1{font-size:clamp(2.8rem, 13vw, 4rem); max-width:9ch}
+      .hero-actions{display:grid; grid-template-columns:1fr; width:100%}
+      .hero-actions .btn{width:100%}
+      .values-grid,
+      .links-cards,
+      .events-preview{
+        grid-template-columns:1fr;
+      }
+      .preview-card{
+        min-height:auto;
+        padding-top:96px;
+      }
+      .preview-thumb{
+        width:96px;
+        height:96px;
+        top:-28px;
+      }
+      .footer-grid{grid-template-columns:1fr; text-align:center}
+      .footer-links{justify-content:center}
+      .panel,.hero-note,.value-card,.line-card,.transversal-card,.events-main,.preview-card,.link-card,.links-brand,.objective-card{padding:24px}
+      .media-frame{min-height:360px}
+
+      .transversal-arc.arc-1{
+        width:320px;
+        height:320px;
+        right:-120px;
+        top:-70px;
+        border-width:42px;
+      }
+
+      .transversal-arc.arc-2{
+        width:220px;
+        height:220px;
+        left:-80px;
+        bottom:-80px;
+        border-width:30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div>Sinergia M</div>
+          <small>Igualdad en movimiento</small>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a class="btn btn-secondary" href="index.html">Inicio</a>
+        <a class="btn btn-secondary" href="eventos-y-proyectos.html">Eventos y proyectos</a>
+        <a class="btn btn-secondary" href="index.html#lilia">Lil.ia</a>
+        <a class="btn btn-primary" href="index.html#guia">Ver la guía</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="label">Sobre Sinergia M</div>
+          <h1 class="serif">Igualdad en movimiento, acción con propósito.</h1>
+          <p>Sinergia M es una Asociación Civil que impulsa procesos jurídicos, educativos, comunitarios y de comunicación para fortalecer la justicia, promover la igualdad de género y contribuir a la erradicación de la violencia y la discriminación.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="eventos-y-proyectos.html">Ver eventos y proyectos</a>
+            <a class="btn btn-secondary" href="index.html#lilia">Escribir a Lil.ia</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-note">
+            <strong>Acompañamos procesos que transforman vidas.</strong>
+            <p>Trabajamos junto a mujeres, personas LGBTQ+ y comunidades diversas en situación de vulnerabilidad para acercar orientación, herramientas y redes de apoyo reales.</p>
+          </div>
+          <div class="hero-note">
+            <strong>Creemos en el poder de lo colectivo.</strong>
+            <p>La igualdad no se construye solo desde el discurso: se hace visible en la práctica, en la formación, en la comunidad y en la acción compartida.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-bg">
+      <div class="container grid-2">
+        <div class="panel">
+          <div class="label label-dark">Quiénes somos</div>
+          <h2 class="serif">Una Asociación Civil que articula justicia, igualdad y acompañamiento.</h2>
+          <p>Somos una Asociación Civil que tiene como objetivo contribuir al ejercicio pleno de los derechos humanos y al fortalecimiento de la justicia, impulsando acciones que promuevan la igualdad de género y la erradicación de toda forma de violencia y discriminación.</p>
+          <p>Acompañamos procesos jurídicos, educativos y comunitarios que transforman vidas y fortalecen la autonomía de mujeres, personas LGBTQ+ y comunidades diversas en situación de vulnerabilidad.</p>
+        </div>
+
+        <div class="media-frame">
+          <img src="images/sinergia1.png" alt="Jornada comunitaria de Sinergia M" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+        <div class="media-frame">
+          <img src="images/sinergia2.png" alt="Historia y actividades de Sinergia M" />
+        </div>
+
+        <div class="panel">
+          <div class="label label-dark">Cómo empezó</div>
+          <h2 class="serif">De Poder Colectivo a Sinergia M.</h2>
+          <p>Durante varios años, el esfuerzo del equipo estuvo dedicado a acompañar a mujeres en situación de violencia y a impulsar acciones sociales orientadas al empoderamiento y a la transformación de sus entornos.</p>
+          <p>El camino comenzó bajo la denominación de Poder Colectivo, realizando actividades diversas con tiempo, compromiso y recursos propios.</p>
+          <p>En 2025, quienes permanecieron en este proceso decidieron conformar Sinergia M y constituirse como Asociación Civil para ampliar el alcance de sus servicios y acompañar a más personas que necesitan apoyo, orientación y herramientas para hacer valer sus derechos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section values">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nuestros valores</h2>
+          <p>La forma en que actuamos importa tanto como el propósito que perseguimos. Estos valores orientan cada acompañamiento, cada proyecto y cada decisión.</p>
+        </div>
+
+        <div class="values-grid">
+          <article class="value-card">
+            <div class="value-icon">⚖️</div>
+            <h3>Igualdad</h3>
+            <p>Garantizamos igualdad de oportunidades y de trato, considerando las diferencias y necesidades de cada persona desde un enfoque de género e interseccional.</p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Sororidad</h3>
+            <p>Promovemos la unión, el respeto y el apoyo entre mujeres para transformar la realidad de manera colectiva.</p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon">💗</div>
+            <h3>Empatía</h3>
+            <p>Escuchamos y acompañamos sin juicios, con sensibilidad y comprensión a quienes enfrentan violencia o exclusión.</p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon">🫶</div>
+            <h3>Compromiso</h3>
+            <p>Trabajamos con ética, responsabilidad y trato digno, entendiendo que cada persona ocupa un lugar valioso en su proceso.</p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon">✨</div>
+            <h3>Transparencia</h3>
+            <p>Actuamos con honestidad en el manejo de recursos, en la rendición de cuentas y en la confianza que la sociedad deposita en nuestro trabajo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section objective">
+      <div class="container objective-wrap">
+        <div class="objective-left">
+         <div class="panel">
+            <div class="label label-dark">Nuestro objetivo</div>
+            <h2 class="serif">Que la igualdad deje de ser discurso y se convierta en realidad tangible.</h2>
+            <p>En Sinergia M trabajamos para transformar espacios de vida en entornos más justos, libres de violencia y sostenibles en el tiempo.</p>
+            <p>Nuestro objetivo es que la igualdad de género deje de ser una aspiración abstracta y se vuelva una experiencia real, visible y compartida en la vida cotidiana.</p>
+        </div>
+
+        <div class="objective-quote">
+            Porque la igualdad no es un destino,<br>
+            sino un camino que construimos todos los días.
+        </div>
+        </div>
+
+        <div class="objective-side">
+        <div class="objective-image">
+         <img src="images/objetivo1.png" alt="Imagen que representa la visión de cambio de Sinergia M" />
+        </div>
+
+        <div class="objective-card">
+            <h3>Visión de cambio</h3>
+            <p>La transformación social no ocurre desde una sola vía. Por eso conectamos formación, acompañamiento, comunidad y comunicación con propósito.</p>
+            <p style="margin-top:14px;">Queremos contribuir a una sociedad donde más personas reconozcan sus derechos, encuentren apoyo oportuno y participen en la construcción de relaciones más igualitarias.</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lines">
+      <div class="container">
+        <div class="lines-head">
+          <h2><span class="accent">»</span>Líneas de acción</h2>
+        </div>
+
+        <div class="lines-grid">
+          <article class="line-card">
+            <h3>1. Acompañamiento jurídico y orientación social</h3>
+            <p>Brinda apoyo legal y social a mujeres y personas de la comunidad LGBTQ+ que enfrentan violencia, discriminación o situaciones de vulnerabilidad, desde un enfoque de derechos humanos, igualdad y trato digno.</p>
+          </article>
+
+          <article class="line-card">
+            <h3>2. Formación en igualdad y no discriminación</h3>
+            <p>Promueve procesos formativos que fortalezcan la conciencia social, el pensamiento crítico y las competencias necesarias para la igualdad sustantiva, la prevención de la violencia y la erradicación de la discriminación.</p>
+          </article>
+
+          <article class="line-card">
+            <h3>3. Colectas y apoyo comunitario</h3>
+            <p>Fortalece la sororidad, la solidaridad y el sentido de comunidad mediante acciones colectivas que brindan apoyo directo a mujeres y familias en situación de vulnerabilidad.</p>
+          </article>
+
+          <article class="line-card">
+            <h3>4. Empoderamiento y capacitación para el trabajo</h3>
+            <p>Promueve la autonomía económica y el fortalecimiento personal de mujeres a través de espacios formativos que desarrollan habilidades para la vida, el liderazgo y el trabajo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section transversal">
+      <div class="transversal-arc arc-1" aria-hidden="true"></div>
+      <div class="transversal-arc arc-2" aria-hidden="true"></div>
+      <div class="container transversal-grid">
+        <div class="transversal-card">
+          <div class="label">Línea transversal</div>
+          <h2 class="serif">Comunicación para la igualdad</h2>
+          <p>Desde Sinergia M impulsamos acciones de difusión, sensibilización y comunicación social que acercan información útil sobre derechos humanos, igualdad de género y prevención de la violencia.</p>
+          <p style="margin-top:14px;">Su propósito es contribuir a que más mujeres y personas en situación de vulnerabilidad se informen, se reconozcan como sujetas de derechos y encuentren en la palabra, el diálogo y la visibilidad una forma de empoderamiento y transformación social.</p>
+        </div>
+
+        <div class="transversal-card">
+          <div class="label">Acciones principales</div>
+          <ul>
+            <li>Participación en programas de televisión, radio y medios digitales para compartir información accesible sobre derechos, igualdad y rutas de atención.</li>
+            <li>Producción de contenidos y campañas con lenguaje incluyente y enfoque de derechos humanos.</li>
+            <li>Colaboración con medios, instituciones y colectivas para fortalecer una comunicación que transforme imaginarios y promueva la cultura de paz.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section events">
+      <div class="container events-grid">
+        <div class="events-main">
+          <div class="label label-dark">Eventos y proyectos</div>
+          <h2 class="serif">Una puerta hacia el trabajo vivo de Sinergia M.</h2>
+          <p>Campañas, himnos, jornadas de donación, colaboraciones, espacios de formación y proyectos con impacto social.</p>
+          <a class="btn btn-dark" href="eventos-y-proyectos.html">Explorar eventos y proyectos</a>
+        </div>
+
+        <div class="events-preview">
+          <div class="preview-card">
+            <div class="preview-thumb">
+              <img src="images/evento1.png" alt="Campañas y contenidos de Sinergia M" />
+            </div>
+            <strong>Campañas y contenidos</strong>
+            <span>Acciones de sensibilización y comunicación con perspectiva de género.</span>
+          </div>
+
+          <div class="preview-card">
+            <div class="preview-thumb">
+              <img src="images/evento2.png" alt="Jornadas comunitarias de Sinergia M" />
+            </div>
+            <strong>Jornadas comunitarias</strong>
+            <span>Presencia en territorio, apoyo directo y redes de acompañamiento.</span>
+          </div>
+
+          <div class="preview-card">
+            <div class="preview-thumb">
+              <img src="images/evento3.png" alt="Colaboraciones de Sinergia M" />
+            </div>
+            <strong>Colaboraciones</strong>
+            <span>Proyectos realizados con medios, colectivas e instituciones.</span>
+          </div>
+
+          <div class="preview-card">
+            <div class="preview-thumb">
+              <img src="images/evento4.png" alt="Procesos formativos de Sinergia M" />
+            </div>
+            <strong>Procesos formativos</strong>
+            <span>Espacios donde la información se convierte en herramientas para actuar.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section links">
+      <div class="container links-wrap">
+        <div class="links-title">
+          <h2 class="serif">Conecta con Sinergia M</h2>
+          <p>Correo, redes y espacios de difusión para seguir de cerca el trabajo de la asociación, descubrir nuevas iniciativas y formar parte del movimiento.</p>
+        </div>
+
+        <div class="links-grid">
+          <div class="links-brand">
+            <div>
+              <h3 class="serif">Una red de acompañamiento, acción y comunidad.</h3>
+              <p>Cada canal tiene una función distinta, pero todos apuntan al mismo lugar: acercar información, orientación, visibilidad y oportunidades reales de transformación social.</p>
+            </div>
+          </div>
+
+          <div class="links-cards">
+            <div class="link-card">
+              <div>
+                <div class="link-icon">✉️</div>
+                <strong>Correo</strong>
+                <span>Contacto institucional y atención general.</span>
+              </div>
+              <a href="mailto:lilianagc@sinergiam.org">lilianagc@sinergiam.org</a>
+            </div>
+
+            <div class="link-card">
+              <div>
+                <div class="link-icon">▶️</div>
+                <strong>YouTube</strong>
+                <span>Contenido audiovisual y materiales de difusión.</span>
+              </div>
+              <a href="#">@Sinergia.M</a>
+            </div>
+
+            <div class="link-card">
+              <div>
+                <div class="link-icon">📸</div>
+                <strong>Instagram</strong>
+                <span>Actualizaciones visuales, campañas y comunidad.</span>
+              </div>
+              <a href="#">Instagram</a>
+            </div>
+
+            <div class="link-card">
+              <div>
+                <div class="link-icon">in</div>
+                <strong>LinkedIn</strong>
+                <span>Alianzas, visibilidad institucional y red profesional.</span>
+              </div>
+              <a href="#">LilianaSinergiaM</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <strong>Sinergia M</strong>
+      <div class="footer-links">
+        <a href="#">Aviso de privacidad</a>
+        <a href="#">Contacto</a>
+      </div>
+      <div>© 2026 Sinergia M</div>
+    </div>
+  </footer>
+</body>
+</html>

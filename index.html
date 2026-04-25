@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sinergia M — Propuesta de homepage</title>
+  <style>
+    :root{
+      --bg:#f6f3ef;
+      --paper:#fbf8f4;
+      --muted:#efe8df;
+      --ink:#1d1722;
+      --ink-soft:#5e5666;
+      --purple:#6a1b9a;
+      --purple-deep:#40105f;
+      --navy:#0d1b5f;
+      --coral:#ee5a4f;
+      --amber:#f1aa43;
+      --pink:#f46aa8;
+      --violet:#8f4bff;
+      --green:#25d366;
+      --line:rgba(64,16,95,.12);
+      --shadow:0 18px 50px rgba(20,10,30,.10);
+      --radius:28px;
+      --max:1300px;
+      --hero-title:clamp(2.9rem, 5.6vw, 5.35rem);
+      --hero-copy:clamp(1rem, 1.35vw, 1.18rem);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto;}
+    .section{position:relative; padding:96px 0}
+    .label{
+      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--ink-soft); font-weight:700; margin-bottom:18px;
+    }
+    .label-lg{
+      font-size:16px;
+      letter-spacing:.16em;
+    }
+    .serif{
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing:-.04em;
+    }
+    .eyebrow-line{
+      display:inline-flex; align-items:center; gap:14px;
+    }
+    .eyebrow-line::before{
+      content:""; width:42px; height:2px; background:linear-gradient(90deg,var(--coral),var(--amber));
+      display:inline-block; border-radius:999px;
+    }
+
+    /* NAV */
+    .nav-wrap{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background:rgba(246,243,239,.78);
+      border-bottom:1px solid rgba(64,16,95,.08);
+    }
+    .nav{
+      min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:14px; font-weight:800; color:var(--purple-deep);
+      letter-spacing:.01em;
+    }
+    .brand-mark{
+      width:36px; height:36px; border-radius:50%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.95) 0 14%, transparent 15%),
+        conic-gradient(from 10deg, var(--purple) 0 18%, var(--coral) 18% 36%, var(--amber) 36% 54%, var(--purple) 54% 72%, var(--coral) 72% 90%, var(--amber) 90% 100%);
+      box-shadow: inset 0 0 0 5px var(--paper);
+      position:relative;
+    }
+    .brand small{display:block; font-size:11px; font-weight:600; color:var(--ink-soft); letter-spacing:.12em; text-transform:uppercase}
+    .nav-links{display:flex; align-items:center; gap:12px}
+    .nav-toggle{display:none; align-items:center; justify-content:center; width:52px; height:52px; border-radius:16px; border:1px solid rgba(64,16,95,.14); background:rgba(255,255,255,.7); color:var(--purple-deep); cursor:pointer; box-shadow:0 10px 24px rgba(20,10,30,.06)}
+    .nav-toggle span{display:block; width:20px; height:2px; background:currentColor; border-radius:999px; position:relative}
+    .nav-toggle span::before,
+    .nav-toggle span::after{content:""; position:absolute; left:0; width:20px; height:2px; background:currentColor; border-radius:999px}
+    .nav-toggle span::before{top:-6px}
+    .nav-toggle span::after{top:6px}
+
+    /* BUTTONS */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      min-height:54px; padding:0 22px;
+      border-radius:16px; font-weight:700; border:1px solid transparent;
+      transition:.25s ease; cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg, var(--coral), #d84b72); color:white; box-shadow:0 16px 34px rgba(238,90,79,.22)}
+    .btn-secondary{background:rgba(255,255,255,.55); border-color:rgba(64,16,95,.16); color:var(--ink)}
+    .btn-ghost{background:transparent; border-color:rgba(255,255,255,.26); color:white}
+    .btn-green{background:var(--green); color:white; box-shadow:0 14px 30px rgba(37,211,102,.24)}
+
+    /* HERO */
+.hero{
+  padding:28px 0 52px;
+  overflow:hidden;
+  min-height:820px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: minmax(560px, 1.08fr) minmax(500px, .92fr);
+  gap:64px;
+  align-items:center;
+  min-height:calc(100vh - 96px);
+}
+.hero h1{
+  margin:0 0 22px;
+  font-size:clamp(2.4rem, 3.6vw, 3.1rem);
+  line-height:1.2;
+  color:var(--purple-deep);
+  max-width:22.2ch;
+}
+.hero p{
+  margin:0 0 30px;
+  font-size:clamp(1rem, 1.2vw, 1.14rem);
+  color:var(--ink-soft);
+  max-width:36ch;
+}
+.hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:24px}
+.hero-meta{
+  display:flex; flex-wrap:wrap; gap:18px; color:var(--ink-soft); font-size:14px;
+}
+.hero-meta span{
+  display:inline-flex; align-items:center; gap:10px;
+}
+.hero-meta span::before{
+  content:""; width:8px; height:8px; border-radius:50%;
+  background:linear-gradient(135deg, var(--coral), var(--amber));
+  display:inline-block;
+}
+
+.hero-portrait{
+  position:absolute;
+  left:-790px;
+  top:70px;
+  width:1860px;
+  height:860px;
+  overflow:hidden;
+  opacity:.05;
+  pointer-events:none;
+  z-index:0;
+}
+.hero-portrait img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center top;
+  filter:saturate(1.98) contrast(1.01);
+}
+.hero-copy-content{
+  position:relative;
+  z-index:2;
+  padding-left:6px;
+}
+
+.hero-art{
+  position:relative;
+  min-height:620px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.orb{
+  position:absolute; inset:auto auto 18% 8%;
+  width:420px; height:420px; border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.88) 0 12%, transparent 13%),
+    conic-gradient(from 30deg, rgba(106,27,154,.92) 0 14%, rgba(238,90,79,.92) 14% 28%, rgba(241,170,67,.92) 28% 42%, rgba(106,27,154,.92) 42% 56%, rgba(238,90,79,.92) 56% 70%, rgba(241,170,67,.92) 70% 84%, rgba(106,27,154,.92) 84% 100%);
+  filter:blur(.2px);
+  opacity:.16;
+  transform:rotate(-18deg);
+}
+.arc{
+  position:absolute; border-radius:50%;
+  border:64px solid transparent;
+  border-top-color:rgba(106,27,154,.15);
+  border-right-color:rgba(238,90,79,.15);
+  transform:rotate(18deg);
+  pointer-events:none;
+}
+.arc.a1{width:640px;height:640px; right:-180px; top:-110px}
+.arc.a2{width:420px;height:420px; right:60px; bottom:-70px; border-width:42px; transform:rotate(210deg)}
+.arc.a3{width:250px;height:250px; right:200px; top:110px; border-width:24px; transform:rotate(78deg)}
+.grid-bg{
+  position:absolute;
+  inset:54px 10px 54px 36px;
+  background-image:
+    linear-gradient(rgba(64,16,95,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64,16,95,.07) 1px, transparent 1px);
+  background-size:26px 26px;
+  mask-image:linear-gradient(135deg, transparent 0%, black 22%, black 72%, transparent 100%);
+  opacity:.45;
+  border-radius:40px;
+}
+.guide-card{
+  position:relative;
+  z-index:2;
+  width:min(100%, 520px);
+  background:linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.72));
+  border:1px solid rgba(64,16,95,.10);
+  border-radius:34px;
+  overflow:hidden;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  transform:translateY(0);
+}
+.guide-top{
+  position:relative;
+  min-height:250px;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,.18), transparent 35%),
+    linear-gradient(135deg, #28114e 0%, #5f24a1 34%, #f04e7c 78%, #f3a64b 100%);
+  padding:26px 24px 32px;
+  isolation:isolate;
+}
+.guide-top::after{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px);
+  background-size:22px 22px;
+  opacity:.22;
+  pointer-events:none;
+}
+.guide-chip{
+  position:relative; z-index:2; display:inline-flex; align-items:center; gap:10px;
+  padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.14); color:white; font-size:12px; font-weight:700;
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(8px);
+}
+.guide-chip .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--amber))}
+.guide-title{
+  position:relative; z-index:2;
+  color:white; margin:24px 0 0; max-width:13.2ch;
+  font-size:clamp(3.95rem, 2.5vw, 2.45rem); line-height:1.0;
+  font-family: Georgia, "Times New Roman", serif; letter-spacing:.0em;
+}
+.guide-sub{
+  position:relative;
+  z-index:2;
+  margin-top:20px !important;
+  color:#ffffff !important;
+  max-width:26ch;
+  font-size:1rem;
+  line-height:1.35;
+  text-shadow:0 1px 1px rgba(0,0,0,.08);
+}
+.guide-bands{
+  position:absolute; inset:0; pointer-events:none;
+}
+.band{
+  position:absolute; background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
+  border-radius:28px;
+  transform:skewX(-18deg);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+}
+.band.b1{width:170px;height:280px; right:38px; top:-24px}
+.band.b2{width:120px;height:160px; right:146px; bottom:-12px}
+.guide-bottom{padding:20px 22px 24px}
+.guide-points{
+  display:grid; grid-template-columns:1fr 1fr; gap:12px 18px; margin:0 0 18px; padding:0; list-style:none;
+  color:#5a5065; font-size:15px;
+}
+.guide-points li{display:flex; gap:10px; line-height:1.35;}
+.guide-points li::before{
+  content:""; flex:0 0 8px; width:8px; height:8px; border-radius:50%; margin-top:8px;
+  background:linear-gradient(135deg,var(--coral),var(--amber));
+}
+.guide-bottom .btns{display:flex; gap:12px; flex-wrap:wrap}
+.guide-note{margin-top:16px; color:#8f6a16; font-weight:700; font-size:13px}
+
+    /* MODULES */
+    .cards{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    }
+    .card{
+      background:rgba(255,255,255,.58);
+      border:1px solid rgba(64,16,95,.10);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 12px 28px rgba(20,10,30,.05);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:""; position:absolute; inset:0 auto auto 0; width:100%; height:4px;
+      background:linear-gradient(90deg, var(--purple), var(--coral), var(--amber));
+    }
+    .card h3{margin:8px 0 10px; font-size:1.45rem; color:var(--ink)}
+    .card p{margin:0; color:var(--ink-soft); font-size:1.02rem}
+    .card-num{
+      width:42px; height:42px; border-radius:14px; display:grid; place-items:center;
+      font-weight:800; color:white;
+      background:linear-gradient(135deg,var(--purple), #8d37c7);
+      box-shadow:0 12px 24px rgba(106,27,154,.18);
+    }
+
+    /* INFO SECTION */
+    .info-grid{
+      display:grid; grid-template-columns: 1fr .88fr; gap:42px; align-items:start;
+    }
+    .prose-box{
+      background:rgba(255,255,255,.52);
+      border:1px solid rgba(64,16,95,.08);
+      border-radius:30px;
+      padding:34px;
+    }
+    .prose-box h2{margin:0 0 22px; font-size:clamp(1.8rem, 3vw, 2.2rem); line-height:1.3; max-width:25ch;letter-spacing:-0.02em;}
+    .prose-box p{font-size:1.08rem; color:var(--ink-soft)}
+    .bullets{margin:24px 0 22px; padding:0; list-style:none}
+    .bullets li{
+      display:flex; gap:14px; margin:14px 0; color:var(--ink-soft); font-size:1.02rem
+    }
+    .bullets li::before{
+      content:""; margin-top:9px; width:8px; height:8px; border-radius:50%;
+      background:var(--coral); flex:0 0 8px;
+    }
+    .soft-link{
+      display:inline-flex; align-items:center; gap:8px; color:var(--coral); font-weight:700; margin-top:6px;
+    }
+
+    .measure-panel{
+      position:relative; min-height:100%; padding:28px; border-radius:30px;
+      background:linear-gradient(180deg, rgba(106,27,154,.06), rgba(255,255,255,.44));
+      border:1px solid rgba(64,16,95,.10);
+      overflow:hidden;
+    }
+    .measure-panel .shape{
+      position:absolute; right:-80px; top:-30px; width:260px; height:260px; border-radius:50%;
+      background:conic-gradient(from 20deg, rgba(106,27,154,.18), rgba(238,90,79,.18), rgba(241,170,67,.18), rgba(106,27,154,.18));
+      opacity:.75;
+      filter:blur(10px);
+    }
+    .stat-stack{position:relative; z-index:2; display:grid; gap:14px}
+    .stat{
+      background:rgba(255,255,255,.72); border:1px solid rgba(64,16,95,.08); border-radius:22px; padding:18px 18px;
+    }
+    .stat strong{display:block; font-size:1.6rem; color:var(--purple-deep)}
+    .stat span{display:block; margin-top:6px; color:var(--ink-soft)}
+    .stat-image{
+      padding:0;
+      overflow:hidden;
+      min-height:120px;
+      background:rgba(255,255,255,.66);
+    }
+    .stat-image img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+
+    /* LILIA */
+    .lilia{
+      background:
+        radial-gradient(circle at 8% 14%, rgba(255,255,255,.06), transparent 22%),
+        linear-gradient(135deg, #09154f 0%, #1a1f75 52%, #0b1452 100%);
+      color:white;
+      overflow:hidden;
+    }
+    .lilia::before{
+      content:""; position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+      background-size:26px 26px;
+      opacity:.45;
+      pointer-events:none;
+    }
+    .lilia-grid{
+      position:relative; z-index:2;
+      display:grid; grid-template-columns: .9fr 1.1fr; gap:42px; align-items:center;
+    }
+    .lilia-portrait{
+      position:relative;
+      min-height:520px;
+      overflow:hidden;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      box-shadow:0 20px 40px rgba(0,0,0,.12);
+    }
+    .lilia-portrait img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+    .lilia-copy h2{font-size:clamp(2.2rem, 4vw, 4rem); line-height:1.2; margin:0 0 18px; letter-spacing:-0.02em;}
+    .lilia-copy p{font-size:1.1rem; color:rgba(255,255,255,.78); max-width:60ch}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px; border-radius:999px; padding:10px 14px;
+      border:1px solid rgba(255,255,255,.15); color:white; font-weight:700; margin-bottom:18px;
+      background:rgba(255,255,255,.06); backdrop-filter:blur(12px);
+    }
+
+    /* GUIDE SECTION */
+    .guide-section{
+      background:linear-gradient(180deg, #451067 0%, #3c0d5a 100%);
+      color:white; overflow:hidden;
+    }
+    .guide-section::before{
+      content:""; position:absolute; width:820px; height:820px; left:-280px; bottom:-300px;
+      border-radius:50%; border:74px solid rgba(255,255,255,.08);
+      border-top-color:rgba(255,255,255,.12);
+      border-right-color:rgba(255,255,255,.10);
+      transform:rotate(24deg);
+      pointer-events:none;
+    }
+    .guide-section::after{
+      content:""; position:absolute; width:340px; height:340px; right:-80px; top:-50px;
+      background:radial-gradient(circle, rgba(244,106,168,.24), transparent 65%);
+      filter:blur(14px);
+      pointer-events:none;
+    }
+    .guide-grid{
+      position:relative; z-index:2;
+      display:grid; grid-template-columns: 1.05fr .95fr; gap:40px; align-items:center;
+    }
+    .guide-copy .label{color:rgba(255,255,255,.62)}
+    .guide-copy h2{
+      margin:0 0 18px; font-size:clamp(2.8rem, 5vw, 4.9rem); line-height:.95;
+      max-width:11ch; letter-spacing:-0.01em;
+    }
+    .guide-copy p{font-size:1.18rem; color:rgba(255,255,255,.74); max-width:32ch}
+    .guide-list{list-style:none; padding:0; margin:34px 0 30px; display:grid; gap:18px}
+    .guide-list li{display:flex; gap:14px; font-size:1.08rem; color:rgba(255,255,255,.9)}
+    .guide-list li::before{
+      content:""; width:9px; height:9px; border-radius:50%; flex:0 0 9px; margin-top:10px;
+      background:linear-gradient(135deg,var(--coral),var(--amber));
+    }
+    .guide-actions{display:flex; gap:12px; flex-wrap:wrap}
+    .guide-foot{margin-top:18px; color:rgba(241,170,67,.92); font-weight:700}
+    .guide-object{
+      position:relative; min-height:560px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .device-shadow{
+      position:absolute; width:84%; aspect-ratio:1/.84; border-radius:44px;
+      background:radial-gradient(circle at 50% 50%, rgba(0,0,0,.22), transparent 70%);
+      filter:blur(28px); bottom:40px;
+    }
+    .guide-book{
+      position:relative; width:min(92%, 440px); aspect-ratio:.77/1;
+      background:
+        linear-gradient(135deg, #20113d 0%, #601f9d 35%, #ef527a 75%, #f0a245 100%);
+      border-radius:34px; border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 34px 60px rgba(0,0,0,.25);
+      overflow:hidden;
+      transform:rotate(-7deg);
+    }
+    .guide-book::before{
+      content:""; position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px);
+      background-size:24px 24px;
+      opacity:.18;
+    }
+    .guide-book::after{
+      content:""; position:absolute; width:220px; height:220px; right:-70px; top:-60px;
+      background:radial-gradient(circle, rgba(255,255,255,.25), transparent 66%);
+    }
+    .book-mark{
+      position:absolute; left:24px; top:24px; padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.12); color:white; font-size:12px; font-weight:700; border:1px solid rgba(255,255,255,.16)
+    }
+    .book-title{
+      position:absolute; left:24px; right:24px; bottom:28px;
+      color:white;
+    }
+    .book-title small{display:block; color:rgba(255,255,255,.72); font-size:13px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:16px}
+    .book-title h3{
+      margin:0; font-size:clamp(2.4rem, 4vw, 3.6rem); line-height:.94; font-family:Georgia, "Times New Roman", serif; letter-spacing:-.02em;
+      max-width:11ch;
+    }
+    .book-band{
+      position:absolute; background:linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.08));
+      border-radius:28px; transform:skewX(-18deg);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+    }
+    .book-band.bb1{width:120px; height:260px; right:24px; top:24px}
+    .book-band.bb2{width:90px; height:150px; right:120px; top:170px}
+
+    /* CREDIBILITY */
+    .cred{
+      text-align:center;
+    }
+    .cred h2{
+      margin:0 auto 18px; font-size:clamp(2rem, 4vw, 3.5rem); max-width:880px; line-height:1.03; color:var(--purple-deep); letter-spacing:-.02em;
+    }
+    .cred p{
+      margin:0 auto; max-width:880px; font-size:1.28rem; color:var(--ink-soft)
+    }
+    .cred .soft-link{margin-top:24px; font-size:1.16rem}
+
+    /* FINAL CTA */
+    .final-cta{
+      overflow:hidden;
+    }
+    .final-cta::before{
+      content:""; position:absolute; width:480px; height:480px; right:-160px; top:-160px; border-radius:50%;
+      border:48px solid rgba(106,27,154,.08); border-top-color:rgba(106,27,154,.12); border-right-color:rgba(238,90,79,.10);
+      transform:rotate(22deg);
+    }
+    .final-box{
+      background:rgba(255,255,255,.6); border:1px solid rgba(64,16,95,.08); border-radius:36px;
+      padding:56px 34px; text-align:center; position:relative; box-shadow:0 18px 40px rgba(20,10,30,.05)
+    }
+    .final-box h2{
+      margin:0 auto 18px; max-width:12ch; font-size:clamp(2.6rem, 5vw, 4.5rem); line-height:.95
+    }
+    .final-box p{
+      max-width:760px; margin:0 auto 28px; font-size:1.24rem; color:var(--ink-soft)
+    }
+    .final-actions{display:flex; justify-content:center; gap:12px; flex-wrap:wrap}
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid rgba(64,16,95,.10);
+      padding:28px 0 40px;
+    }
+    .footer-grid{
+      display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:18px;
+      color:var(--ink-soft)
+    }
+    .footer-grid strong{color:var(--ink)}
+    .footer-links{display:flex; gap:26px; flex-wrap:wrap}
+
+    /* utility */
+    .muted{
+      background:
+        radial-gradient(circle at 20% 30%, rgba(106,27,154,.10) 0, rgba(106,27,154,.06) 14%, transparent 34%),
+        radial-gradient(circle at 80% 70%, rgba(241,170,67,.12) 0, rgba(238,90,79,.08) 16%, transparent 36%),
+        radial-gradient(circle at 62% 28%, rgba(244,106,168,.06) 0, transparent 24%),
+        linear-gradient(180deg, rgba(106,27,154,.02), rgba(255,255,255,.34));
+    }
+    .mt-0{margin-top:0}
+
+
+@media (max-width: 1100px){
+  .hero-grid,.guide-grid,.lilia-grid,.info-grid{grid-template-columns:1fr}
+  .hero-copy-content{padding-left:0}
+.hero-portrait{left:auto; right:-70px; top:-20px; bottom:auto; width:320px; height:460px; opacity:.07}
+.hero h1{max-width:11ch}
+  .hero-art{min-height:540px}
+  .lilia-portrait{min-height:420px}
+  .guide-object{min-height:460px}
+}
+
+    @media (max-width: 760px){
+      html, body{overflow-x:hidden}
+      .section{padding:72px 0}
+      .container{width:min(var(--max), calc(100% - 24px))}
+      .nav{min-height:78px; display:grid; grid-template-columns:52px 1fr 52px; align-items:center; padding:12px 0; gap:10px}
+      .nav-toggle{display:inline-flex}
+      .brand{width:auto; justify-self:center; text-align:center; gap:10px}
+      .brand small{display:none}
+      .nav-links{display:none; width:100%; grid-column:1 / -1; padding-top:12px; gap:10px}
+      .nav-wrap.menu-open .nav-links{display:grid}
+      .nav-links .btn{min-height:52px; padding:0 16px; width:100%}
+      .hero{padding-top:26px; min-height:auto}
+      .hero-grid{grid-template-columns:1fr; min-height:auto; gap:28px}
+      .hero h1{max-width:10ch; font-size:clamp(1.15rem, 4vw, 1.45rem); line-height:1.02; letter-spacing:-.02em}
+      .hero p{max-width:100%}
+      .hero-copy-content{padding-left:0}
+      .hero-portrait{display:none}
+      .hero-art{min-height:auto; width:100%; overflow:hidden}
+      .grid-bg{inset:24px 0 24px 0}
+      .guide-card{width:100%; max-width:100%}
+      .guide-top{min-height:220px}
+      .guide-title{font-size:clamp(2rem, 8.2vw, 2.9rem); line-height:.98; max-width:18ch}
+      .guide-sub{max-width:18ch}
+      .guide-bottom{padding:20px 18px 24px}
+      .hero-actions, .guide-actions, .final-actions, .guide-bottom .btns{display:grid; grid-template-columns:1fr; width:100%}
+      .hero-actions .btn, .guide-actions .btn, .final-actions .btn, .guide-bottom .btns .btn{width:100%}
+      .cards{grid-template-columns:1fr}
+      .guide-points{grid-template-columns:1fr}
+      .measure-panel{order:2}
+      .footer-grid{grid-template-columns:1fr; text-align:center}
+      .footer-links{justify-content:center}
+      .guide-book{transform:none}
+      .brand small{display:none}
+      .orb{left:50%; transform:translateX(-50%) rotate(-18deg); width:300px; height:300px; bottom:30px}
+      .arc.a1{right:-280px; top:0}
+      .arc.a2{right:-140px}
+      .arc.a3{right:10px; top:90px}
+      .lilia-copy p,.guide-copy p,.final-box p,.cred p{font-size:1.05rem}
+      .prose-box,.card,.final-box{padding:24px}
+      .guide-object{min-height:360px}
+    }
+
+    @media (max-width: 520px){
+      .nav-links .btn{flex:1 1 100%}
+      .hero h1{max-width:20ch; font-size:clamp(1.55rem, 6.6vw, 2.05rem); line-height:1.02; letter-spacing:-.02em}
+      .guide-title{font-size:clamp(1.85rem, 7.2vw, 2.45rem); line-height:.98; max-width:18ch}
+      .guide-card{border-radius:28px}
+      .guide-top{padding:22px 20px 26px}
+      .guide-points li{font-size:14px}
+      .hero-meta{gap:12px 16px; font-size:13px}
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container nav">
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+        <span aria-hidden="true"></span>
+      </button>
+      <a href="#top" class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div>Sinergia M</div>
+          <small>Igualdad en movimiento</small>
+        </div>
+      </a>
+      <div class="nav-links" id="main-menu">
+        <a class="btn btn-secondary" href="sobre-sinergia-m.html">Sobre Sinergia M</a>
+        <a class="btn btn-secondary" href="eventos-y-proyectos.html">Eventos y proyectos</a>
+        <a class="btn btn-secondary" href="#lilia">Lil.ia</a>
+        <a class="btn btn-primary" href="#guia">Ver la guía</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div>
+  <div class="hero-portrait" aria-hidden="true">
+    <img src="images/mujer1.png" alt="" />
+  </div>
+  <div class="hero-copy-content">
+    <div class="label eyebrow-line">Guía rápida</div>
+    <h1 class="serif">Información que puede salvar vidas. Esta guía te explica cómo puedes protegerte si eres mujer en México y vives violencia.</h1>
+    <p>La 1a. guía práctica dirigida a las posibles usuarias, gratuita y en lenguaje claro para comprender qué son las medidas de protección para mujeres que viven violencia, cómo solicitarlas SIN abogado/a, SIN denuncia y SIN costo.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#guia">Ver la guía</a>
+      <a class="btn btn-secondary" href="#lilia">Escribir a Lil.ia</a>
+    </div>
+    <div class="hero-meta">
+      <span>Sin costo</span>
+      <span>Sin registro</span>
+      <span>Orientación clara</span>
+    </div>
+  </div>
+</div>
+
+        <div class="hero-art">
+          <div class="grid-bg"></div>
+          <div class="orb"></div>
+          <div class="arc a1"></div>
+          <div class="arc a2"></div>
+          <div class="arc a3"></div>
+
+          <article class="guide-card">
+            <div class="guide-top">
+              <div class="guide-bands">
+                <div class="band b1"></div>
+                <div class="band b2"></div>
+              </div>
+              <div class="guide-chip"><span class="dot"></span> Sinergia M · recurso disponible</div>
+              <h2 class="guide-title">Guía rápida para solicitar medidas de protección</h2>
+              <p class="guide-sub">Un recurso gratuito, claro y listo para consultarse cuando lo necesites.</p>
+            </div>
+            <div class="guide-bottom">
+              <ul class="guide-points">
+                <li>Qué son y para qué sirven</li>
+                <li>Cuándo puedes solicitarlas</li>
+                <li>Qué esperar del proceso</li>
+                <li>Respuestas claras a preguntas frecuentes</li>
+              </ul>
+              <div class="btns">
+                <a class="btn btn-primary" href="#guia">Descargar la guía</a>
+                <a class="btn btn-secondary" href="#guia">Ver en línea</a>
+              </div>
+              <div class="guide-note">Sin costo. Sin registro.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section muted">
+      <div class="container">
+        <div class="label label-lg">Para qué sirve este sitio</div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-num">1</div>
+            <h3>Información clara</h3>
+            <p>Te explicamos qué y cuáles son las medidas de protección para las mujeres en situación de violencia conforme a la Ley General de Acceso de las Mujeres a una Vida Libre de Violencias (LGAMVLV), cómo solicitarlas sin necesidad de abogado/a y sin denuncia, con palabras directas y sin tecnicismos.</p>
+          </article>
+          <article class="card">
+            <div class="card-num">2</div>
+            <h3>Una guía concreta</h3>
+            <p>Consulta una guía rápida pensada para ayudarte a entender el proceso, ubicar tus opciones y saber qué esperar antes de dar un primer paso.</p>
+          </article>
+          <article class="card">
+            <div class="card-num">3</div>
+            <h3>Orientación por WhatsApp</h3>
+            <p>Si tienes dudas, Lil.ia puede orientarte de forma clara y accesible por WhatsApp, directamente desde tu celular.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container info-grid">
+        <div class="prose-box">
+          <div class="label">¿Qué son las medidas de protección?</div>
+          <h2 class="serif">Son medidas legales que buscan reducir el riesgo y protegerte ante una situación de violencia.</h2>
+          <p>Las medidas de protección que contempla la LGAMVLV son órdenes que puede emitir un juez o jueza, cuando no es de tu interés presentar una denuncia penal, para limitar el contacto, la cercanía o determinadas conductas de una persona que representa un riesgo para ti y ayudar a que pare la violencia.</p>
+
+          <ul class="bullets">
+            <li>Que la persona agresora se aleje de tu domicilio, tu trabajo o tu escuela.</li>
+            <li>Restricciones para que no pueda buscarte, llamarte o contactarte por ningún medio.</li>
+            <li>Medidas específicas para proteger tu seguridad en espacios determinados, incluido el domicilio donde habitas, sin importar a nombre de quién se encuentre.</li>
+          </ul>
+
+          <p class="mt-0">Informarte también es una forma de cuidarte. Puedes conocer estas medidas incluso si todavía no has decidido qué hacer.</p>
+          <a class="soft-link" href="#guia">La guía te lo explica paso a paso →</a>
+        </div>
+
+        <aside class="measure-panel">
+          <div class="shape"></div>
+          <div class="stat-stack">
+            <div class="stat">
+              <strong>Claridad</strong>
+              <span>La información está ordenada para ayudarte a entender rápido lo más importante.</span>
+            </div>
+            <div class="stat">
+              <strong>Acción</strong>
+              <span>La guía traduce el proceso en pasos concretos, visibles y fáciles de ubicar.</span>
+            </div>
+            <div class="stat">
+              <strong>Acceso</strong>
+              <span>Consultar esta información no te obliga a decidir de inmediato. Entender tus opciones también cuenta.</span>
+            </div>
+            <div class="stat stat-image">
+              <img src="images/card2.png" alt="Ilustración complementaria sobre medidas de protección" />
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section lilia" id="lilia">
+      <div class="container lilia-grid">
+        <div class="lilia-portrait">
+          <img src="images/lilia2.png" alt="Portada de Lil.ia" />
+        </div>
+
+        <div class="lilia-copy">
+          <div class="pill">Lil.ia · canal conversacional</div>
+          <h2 class="serif">Orientación clara, disponible por WhatsApp.</h2>
+          <p>Lil.ia es el canal de orientación de Sinergia M. Si tienes dudas sobre las medidas de protección o no sabes por dónde empezar, puedes escribirle por WhatsApp desde tu celular.</p>
+          <p>Puede ayudarte a resolver preguntas concretas, entender mejor tus opciones y ubicar los pasos que podrían corresponder a tu situación.</p>
+          <a class="btn btn-green" href="#">Escribir a Lil.ia</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section guide-section" id="guia">
+      <div class="container guide-grid">
+        <div class="guide-copy">
+          <div class="label eyebrow-line">Guía rápida</div>
+          <h2 class="serif">Y tú ¿Qué quieres?</h2>
+          <p>Esta es la pregunta clave con la que Sinergia M trabaja. Parece básico, pero no lo es. ¿Alguna vez te lo preguntaron?</p>
+
+          <ul class="guide-list">
+            <li>Por ejemplo: si quieres que se vaya de la casa y deje de agredirte a ti, a tus hijos o hijas, la solución NO es la denuncia.</li>
+            <li>Cuando no te preguntan, seguramente el resultado no será lo que esperas.</li>
+            <li>Consulta la primera guía en México pensada en ti y en tu protección frente a la violencia.</li>
+          </ul>
+
+          <div class="guide-actions">
+            <a class="btn btn-primary" href="#">Descargar la guía</a>
+            <a class="btn btn-ghost" href="#">Ver en línea</a>
+          </div>
+          <div class="guide-foot">Sin costo. Sin registro.</div>
+        </div>
+
+        <div class="guide-object">
+          <div class="device-shadow"></div>
+          <div class="guide-book">
+            <div class="book-mark">Sinergia M · recurso central</div>
+            <div class="book-band bb1"></div>
+            <div class="book-band bb2"></div>
+            <div class="book-title">
+              <small>Guía rápida</small>
+              <h3>Solicitar medidas de protección</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section muted">
+      <div class="container cred">
+        <div class="label">Sinergia M</div>
+        <h2 class="serif">Una organización que convierte el trabajo de fondo en orientación accesible.</h2>
+        <p>Somos una asociación civil mexicana que trabaja con perspectiva de género para impulsar la igualdad, el acceso a derechos y la transformación social. Este sitio forma parte de nuestro trabajo de orientación, información y acompañamiento accesible.</p>
+        <a class="soft-link" href="sobre-sinergia-m.html">Conoce más sobre Sinergia M →</a>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container">
+        <div class="final-box">
+          <div class="label">Todo comienza por conocer tus opciones</div>
+          <h2 class="serif">La información que puede salvar una vida a tan solo un clic.</h2>
+          <p>La guía es gratuita y Lil.ia está disponible para orientarte. No necesitas haber tomado una decisión para saber que sí hay opción para ponerle un freno a la violencia.</p>
+          <div class="final-actions">
+            <a class="btn btn-primary" href="#guia">Ver la guía</a>
+            <a class="btn btn-secondary" href="#lilia">Escribir a Lil.ia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <strong>Sinergia M</strong>
+      <div class="footer-links">
+        <a href="#">Aviso de privacidad</a>
+        <a href="#">Contacto</a>
+      </div>
+      <div>© 2026 Sinergia M</div>
+    </div>
+  </footer>
+  <script>
+    const navWrap = document.querySelector('.nav-wrap');
+    const navToggle = document.querySelector('.nav-toggle');
+    if (navWrap && navToggle) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navWrap.classList.toggle('menu-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navWrap.classList.remove('menu-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
