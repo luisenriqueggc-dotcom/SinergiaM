@@ -398,6 +398,14 @@
       font-size:.96rem;
     }
 
+    .calendar-description{
+      margin:8px 0 0;
+      color:rgba(255,255,255,.68);
+      font-size:.92rem;
+      line-height:1.45;
+      max-width:52ch;
+    }
+    
     .calendar-tag{
       padding:10px 14px;
       border-radius:999px;
@@ -896,6 +904,7 @@
             <div class="calendar-info">
               <strong>${event.title || ''}</strong>
               <span>${event.meta || ''}</span>
+              ${event.description ? `<p class="calendar-description">${event.description}</p>` : ''}
             </div>
             <div class="calendar-tag">${event.tag || 'Evento'}</div>
           </article>
