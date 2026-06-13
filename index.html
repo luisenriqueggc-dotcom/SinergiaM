@@ -82,6 +82,92 @@
       display:inline-block; border-radius:999px;
     }
 
+
+    /* TOP ANNOUNCEMENT BANNER */
+    .announcement{
+      padding:18px 0 0;
+      background:
+        radial-gradient(circle at 8% 20%, rgba(244,106,168,.14), transparent 28%),
+        radial-gradient(circle at 92% 0%, rgba(241,170,67,.14), transparent 30%),
+        var(--bg);
+    }
+    .announcement-card{
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:20px;
+      padding:18px 20px;
+      border-radius:24px;
+      border:1px solid rgba(64,16,95,.10);
+      background:
+        linear-gradient(135deg, rgba(106,27,154,.10), rgba(255,255,255,.72) 48%, rgba(238,90,79,.10));
+      box-shadow:0 14px 34px rgba(20,10,30,.07);
+    }
+    .announcement-card::before{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      right:-96px;
+      top:-112px;
+      border-radius:50%;
+      border:30px solid rgba(106,27,154,.08);
+      border-top-color:rgba(238,90,79,.16);
+      border-right-color:rgba(241,170,67,.16);
+      transform:rotate(24deg);
+      pointer-events:none;
+    }
+    .announcement-copy{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      min-width:0;
+    }
+    .announcement-icon{
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      color:white;
+      font-size:22px;
+      background:linear-gradient(135deg, var(--purple), var(--coral));
+      box-shadow:0 12px 24px rgba(106,27,154,.18);
+    }
+    .announcement-kicker{
+      margin:0 0 2px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:800;
+      color:var(--purple-deep);
+    }
+    .announcement-title{
+      margin:0;
+      font-size:clamp(1rem, 1.7vw, 1.22rem);
+      line-height:1.25;
+      font-weight:800;
+      color:var(--ink);
+    }
+    .announcement-title span{
+      color:var(--purple-deep);
+    }
+    .announcement-text{
+      margin:4px 0 0;
+      color:var(--ink-soft);
+      font-size:.96rem;
+    }
+    .announcement-action{
+      position:relative;
+      z-index:2;
+      white-space:nowrap;
+    }
+
     /* NAV */
     .nav-wrap{
       position:sticky; top:0; z-index:50;
@@ -595,6 +681,12 @@
       html, body{overflow-x:hidden}
       .section{padding:72px 0}
       .container{width:min(var(--max), calc(100% - 24px))}
+      .announcement{padding:12px 0 0}
+      .announcement-card{grid-template-columns:1fr; gap:14px; padding:16px; border-radius:22px}
+      .announcement-copy{align-items:flex-start; gap:12px}
+      .announcement-icon{width:42px; height:42px; border-radius:14px; font-size:20px}
+      .announcement-action, .announcement-action .btn{width:100%}
+
       .nav{min-height:78px; display:grid; grid-template-columns:52px 1fr 52px; align-items:center; padding:12px 0; gap:10px}
       .nav-toggle{display:inline-flex}
       .brand{width:auto; justify-self:center; text-align:center; gap:10px}
@@ -667,6 +759,25 @@
   </div>
 
   <main id="top">
+
+    <section class="announcement" aria-label="Nueva guía disponible">
+      <div class="container">
+        <div class="announcement-card">
+          <div class="announcement-copy">
+            <div class="announcement-icon" aria-hidden="true">✦</div>
+            <div>
+              <p class="announcement-kicker">Nueva guía disponible</p>
+              <p class="announcement-title"><span>Guía rápida LGBTQ+</span> de apoyo y defensa de derechos en Morelos.</p>
+              <p class="announcement-text">Un recurso gratuito de Sinergia M para ubicar rutas de apoyo ante discriminación, violencia, salud, identidad, justicia y bienestar.</p>
+            </div>
+          </div>
+          <div class="announcement-action">
+            <a class="btn btn-primary" href="docs/guia-rapida-lgbtq-sinergia-m.pdf" target="_blank" rel="noopener">Ver la guía LGBTQ+</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="hero section">
       <div class="container hero-grid">
         <div>
